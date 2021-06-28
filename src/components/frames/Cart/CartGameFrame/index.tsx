@@ -1,11 +1,11 @@
-import { Container, GameTitle, CounterContainer, InfoContainer, CoverContainer, Control, Counter } from "./styles"
 import Image from 'next/image'
-
+import { useContext, useState } from "react"
+import { ShopContext } from "../../../../contexts/ShopContext"
 import games from '../../../../database/products.json'
 import { Minus } from "../../../icons/minus"
 import { Plus } from "../../../icons/plus"
-import { useContext, useEffect, useState } from "react"
-import { ShopContext } from "../../../../contexts/ShopContext"
+import { Container, Control, Counter, CounterContainer, CoverContainer, GameTitle, InfoContainer } from "./styles"
+
 
 interface cartItemsProps {
   id: number,
@@ -68,7 +68,7 @@ export function CartGameFrame({index}: {index: number }) {
       </InfoContainer>
 
       <CoverContainer>
-        <Image src={image} width="100" height="100"/>
+        <Image src={image} width="100" height="100" alt=""/>
       </CoverContainer>
     </Container>
   )

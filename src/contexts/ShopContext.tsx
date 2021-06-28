@@ -64,7 +64,7 @@ export function ShopProvider({
     }, 0)
 
     const itemsPrice = pricesArr.length <= 0 ? 0 :pricesArr.reduce((a, b) => a+b) 
-    const totalShipping = itemsPrice < 250 ? totalAmount * 10 : 0;
+    const totalShipping = itemsPrice < 250 ? totalAmount * 10.00 : 0;
     const total = itemsPrice + totalShipping
 
     setPrice(itemsPrice)
