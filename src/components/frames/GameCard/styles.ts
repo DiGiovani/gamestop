@@ -74,4 +74,9 @@ export const CartButton = styled(Button)`
 
   right: 15px;
   bottom: 15px;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+  transition: .2s;
 `

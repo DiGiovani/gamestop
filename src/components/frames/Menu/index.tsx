@@ -6,7 +6,7 @@ import { LogoExtended } from "../../icons/logo-extended";
 import { Button, Container } from "./styles";
 
 export default function Menu() {
-  const { cartItems } = useContext(ShopContext)
+  const { cartItems, switchCart } = useContext(ShopContext)
 
   const router = useRouter()
 
@@ -16,7 +16,7 @@ export default function Menu() {
         <LogoExtended />
       </Button>
 
-      <Button number={cartItems.length}>
+      <Button onClick={switchCart} number={cartItems.length}>
         <Cart />
       </Button>
     </Container>

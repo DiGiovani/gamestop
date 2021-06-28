@@ -15,15 +15,19 @@ interface Game {
 export function GameFrame({game}: {game: Game}) {
   const {addItem} = useContext(ShopContext)
 
+  const priceArr = `${game.price}`.split('.')
+  priceArr[1] = priceArr[1].length == 1 ? `${priceArr[1]}0` : priceArr[1];
+  const price = priceArr.join(',')
+
   return(
     <Container>
       <ImageFrame>
-        <Image src={`/assets/${game.image}`} width={180} height={180} />
+        <Image src={`/assets/${game.image}`} width={180} height={180} alt=""/>
       </ImageFrame>
 
       <TitleFrame>
         <h2>{ game.name }</h2>
-        <h3>{`R$ ${game.price}`}</h3>
+        <h3>{`R$ ${price}`}</h3>
         <CartButton onClick={() => addItem(game.id)}>
           <Cart />
         </CartButton>

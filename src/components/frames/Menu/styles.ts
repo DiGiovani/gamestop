@@ -3,12 +3,13 @@ import styled from 'styled-components'
 export const Container = styled.div`
   background-color: #E6F0FF;
   width: 100%;
-  height: 100px;
+  min-height: 100px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  margin: 0 0 40px;
   padding: 0 40px;
 `
 
@@ -31,6 +32,9 @@ export const Button = styled.button`
   margin: 0;
 
   cursor: pointer;
+
+  z-index: ${props => props.logo ? '0' : '2'};
+  transition: 0.2s;
 
   ${props => {
     if(props.number > 0) {
@@ -55,4 +59,8 @@ export const Button = styled.button`
       )
     }
   }}
+
+  &:hover {
+    filter: brightness(0.8);
+  }
 `
