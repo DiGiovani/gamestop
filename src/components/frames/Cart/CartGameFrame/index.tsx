@@ -14,7 +14,7 @@ interface cartItemsProps {
 }
 
 export function CartGameFrame({index}: {index: number }) {
-  const { cartItems, setCartItems, removeItem } = useContext(ShopContext)
+  const { cartItems, setCartItems, removeItem, calcPrice } = useContext(ShopContext)
   
   const [ amount, setAmount ] = useState(cartItems[index].amount) //this part was created to update the number asap
 
@@ -30,6 +30,7 @@ export function CartGameFrame({index}: {index: number }) {
     let editableCart = cartItems
     editableCart[index].amount += cartItems[index].amount < 10 ? 1 : 0;
     setAmount(editableCart[index].amount)
+    calcPrice()
     return setCartItems(editableCart)
   }
 
@@ -41,6 +42,7 @@ export function CartGameFrame({index}: {index: number }) {
     let editableCart = cartItems
     editableCart[index].amount -=  1 ;
     setAmount(editableCart[index].amount)
+    calcPrice()
     return setCartItems(editableCart)
   }
 

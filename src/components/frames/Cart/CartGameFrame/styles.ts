@@ -13,7 +13,7 @@ export const Container = styled.div`
 
   transition: 0.5s;
 
-  &:after {
+  &:not(:last-of-type):after {
     content: ' ';
     position: absolute;
     bottom: 0;
