@@ -1,6 +1,6 @@
 # Gamestop
 
-[Figma](https://www.figma.com/file/Txh3Hw9GwfSoI9rJ5p0YOa/gameStop?node-id=9%3A0)
+[Figma](https://www.figma.com/file/Txh3Hw9GwfSoI9rJ5p0YOa/gameStop?node-id=9%3A0)      
 [Hosted on Vercel](https://gamestop.vercel.app/)
 
 
