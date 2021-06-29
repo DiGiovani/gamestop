@@ -1,3 +1,9 @@
+# Gamestop
+
+[Figma](https://www.figma.com/file/Txh3Hw9GwfSoI9rJ5p0YOa/gameStop?node-id=9%3A0)
+[Hosted on Vercel](https://gamestop.vercel.app/)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
