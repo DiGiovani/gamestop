@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react"
 import { ShopContext } from "../../../contexts/ShopContext"
 import { Close } from "../../icons/close"
+import { Dollar } from "../../icons/dollar"
 import { Button } from "../Menu/styles"
-import { Container, Header , Title, Footer, Price} from "./styles"
+import { Container, Header , Title, Footer, Price, CheckButton, FormInput } from "./styles"
 import { CartGameFrame } from "./CartGameFrame"
 
 
 
 export function Cart() {
 
-  const {isCartOpen, switchCart, cartItems, price, shipping, total} = useContext(ShopContext)
+  const {isCartOpen, switchCart, cartItems, price, shipping, total, status, inputValue, setInputValue} = useContext(ShopContext)
+
 
   function formatNumber(number: number) {
     const arr = `${number}`.split('.')
@@ -59,6 +61,12 @@ export function Cart() {
           <h2>TOTAL</h2>
           <h2>R$ {fTotal}</h2>
         </Price>
+
+        <CheckButton>
+          CHECKOUT <Dollar />
+        </CheckButton>
+
+        <FormInput status={status} onChange={ e => setInputValue(e.target.value)}/>
       </Footer>
     </Container>
   )

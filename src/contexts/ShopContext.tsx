@@ -22,10 +22,14 @@ interface ProviderProps {
 interface ContextProps {
   price: number;
   shipping: number;
+  discount: number;
   total: number;
   cartItems: cartItemsProps[];
   isCartOpen: boolean;
+  status: string;
+  inputValue: string;
   setPrice: Dispatch<SetStateAction<Number>>;
+  setInputValue: Dispatch<SetStateAction<String>>;
   setCartItems: Dispatch<SetStateAction<cartItemsProps[]>>;
   switchCart: () => void;
   addItem: (id: number) => void;
@@ -41,9 +45,13 @@ export function ShopProvider({
 
   const [price, setPrice] = useState(0)
   const [shipping, setShipping] = useState(0)
+  const [discount, setDiscount] = useState(0)
   const [total, setTotal] = useState(0)
   const [cartItems, setCartItems] = useState<cartItemsProps[]>([])
   const [ isCartOpen, setIsCartOpen] = useState(false)
+  const [ status, setStatus ] = useState('empty')
+  const [ inputValue, setInputValue ] = useState('')
+
 
   
 
@@ -65,8 +73,14 @@ export function ShopProvider({
 
     const itemsPrice = pricesArr.length <= 0 ? 0 :pricesArr.reduce((a, b) => a+b) 
     const totalShipping = itemsPrice < 250 ? totalAmount * 10.00 : 0;
-    const total = itemsPrice + totalShipping
+    
+    const status = inputValue.length < 1 ? 'empty' : (inputValue == 'HIRED' ? 'right' : 'wrong');
+    const total = status == "right" ? 0 : itemsPrice + totalShipping
+    
+    const discount = status == 'right' ? total : 0; 
 
+    setStatus(status)
+    setDiscount(discount)
     setPrice(itemsPrice)
     setShipping(totalShipping)
     setTotal(total)
@@ -102,13 +116,14 @@ export function ShopProvider({
 
   useEffect(() => {
     calcPrice()
-  }, [cartItems])
+  }, [cartItems, inputValue])
 
   return(
 
     <ShopContext.Provider value={{
       price,
       shipping,
+      discount,
       total,
       setPrice,
       cartItems,
@@ -117,7 +132,10 @@ export function ShopProvider({
       removeItem,
       isCartOpen,
       switchCart,
-      calcPrice
+      calcPrice,
+      status,
+      inputValue,
+      setInputValue
     }}>
 
       {children}

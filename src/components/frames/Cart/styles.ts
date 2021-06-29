@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '../Menu/styles'
 
 export const Container = styled.div`
   position: absolute;
@@ -95,6 +96,50 @@ export const Price = styled.div`
   & > h2.discount:before {
     content: '-'
   }
-  
+`
+
+export const CheckButton = styled(Button)`
+  position: absolute;
+
+  bottom: 10px;
+  right: 13px;
+
+  border-radius: 50px;
+
+  width: 180px;
+  height: 50px;
+
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+
+  padding: 10px;
+`
+
+export const FormInput = styled.input`
+  position: absolute;
+
+  bottom: 10px;
+  left: 5px;
+
+  height: 50px;
+  width: 150px;
+
+  box-shadow: inset 0px 4px 4px rgba(240, 240, 255, 0.8);
+
+  border-radius: 50px;
+  border: 2px solid ${props => {
+    if (props.status == 'wrong') return "#F00";
+    if (props.status == 'right') return '#55a630';
+    if (props.status == 'empty') return "#2F80ED";
+  }};
+
+  background: #FDFDFF;
+
+  font-size: 22px;
+  font-weight: 600;
+  font-family: 'Exo 2', sans-serif;
+
+  padding: 15px;  
 `
 
